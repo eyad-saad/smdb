@@ -18,8 +18,9 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Abel', sans-serif;
     }
     body {
-        margine: 0;
+        margin: 0;
         padding: 0;
+        box-sizing: border-box;
 
         h1 {
             font-size: 2rem;
@@ -36,4 +37,4 @@ export const GlobalStyle = createGlobalStyle`
         }
     }
 
-`
+`;
