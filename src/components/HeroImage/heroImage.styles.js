@@ -36,19 +36,19 @@ export const Text = styled.div`
     z-index: 100;
     max-width: 700px;
     position: absolute;
-    bottome: 40px;
-    margine-right: 20px;
+    bottom: 40px;
+    margin-right: 20px;
     min-height: 100px;
     color: var(--white);
 
     h1{
-        font-size: var(--fontSuperBig)
+        font-size: var(--fontSuperBig);
 
         @media screen and (max-width: 720px){
             font-size: var(--fontBig);
         }
     p {
-        font-size: var(--fontMed):
+        font-size: var(--fontMed);
 
         @media screen and (max-width: 720px){
             font-size: var(--fontSmall);
