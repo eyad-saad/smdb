@@ -9,7 +9,8 @@ import SearchBar from './SearchBar'
 import Button from './Button'
 
 const Home = () => {
-    const {state, loading, error, searchTerm, setSearchTerm} = useHomeFetch();
+    const {state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore} = useHomeFetch();
+    if (error) return <div>Something went wrong ...</div>;
     return (
         <>
             {!searchTerm && state.results[0]?
@@ -31,13 +32,13 @@ const Home = () => {
                             ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
                             : null
                         }
-                        moiveID={movie.id}
+                        movieId={movie.id}
                     />
                 ))}
             </Grid>
             {loading && <Spinner/>}
             {state.page < state.total_pages && !loading && (
-                <Button text='Load More'/>
+                <Button text='Load More' callback={() => setIsLoadingMore(true)}/>
             )}
         </>
     )
