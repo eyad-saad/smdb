@@ -1,4 +1,5 @@
 import React from 'react';
+import { render } from "react-dom";
 
 // Components
 import Thumb from '../Thumb';
@@ -12,6 +13,14 @@ import NoImage from '../../images/no_image.jpg';
 //styles
 import {Wrapper, Content, Text} from './MovieInfo.styles'
 
+// external
+import ReactStars from "react-rating-stars-component";
+
+
+const ratingChanged = (newRating) => {
+    console.log(newRating);
+  };
+  
 const MovieInfo = ({ movie}) => (
     <Wrapper backdrop={movie.backdrop_path}>
         <Content>
@@ -29,7 +38,7 @@ const MovieInfo = ({ movie}) => (
                 <p>{movie.overview}</p>
                 <div className = "rating-directors">
                     <div>
-                        <h3>Rating</h3>
+                        <h3>Average Rating</h3>
                         <div className="score">{movie.vote_average}</div>
                     </div>
                     <div className="director">
@@ -39,6 +48,13 @@ const MovieInfo = ({ movie}) => (
                             ))}
                     </div>
                 </div>
+                <h3>Rate:</h3>
+                <ReactStars
+                    count={5}
+                    onChange={ratingChanged}
+                    size={24}
+                    activeColor="#ffd700"
+                />
             </Text>
         </Content>
     </Wrapper>

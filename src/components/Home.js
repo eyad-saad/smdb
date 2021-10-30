@@ -8,6 +8,8 @@ import Spinner from './Spinner'
 import SearchBar from './SearchBar'
 import Button from './Button'
 
+
+
 const Home = () => {
     const {state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore} = useHomeFetch();
     if (error) return <div>Something went wrong ...</div>;
