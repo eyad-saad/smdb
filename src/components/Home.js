@@ -2,6 +2,7 @@ import React from 'react';
 import HeroImage from './HeroImage'
 import {useHomeFetch, } from '../hooks/useHomeFetch'
 import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from '../config';
+import { API_URL } from '../config';
 import Grid from './Grid'
 import Thumb from './Thumb'
 import Spinner from './Spinner'
@@ -17,8 +18,8 @@ const Home = () => {
         <>
             {!searchTerm && state.results[0]?
             <HeroImage
-                image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[0].backdrop_path}`}
-                title={state.results[0].original_title}
+                image={`${API_URL}${state.results[0].backdrop}`}
+                title={state.results[0].title}
                 text={state.results[0].overview}
              />
             : null
@@ -30,8 +31,8 @@ const Home = () => {
                         key={movie.id}
                         clickable
                         image={
-                            movie.poster_path
-                            ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
+                            movie.image
+                            ? API_URL + movie.image
                             : null
                         }
                         movieId={movie.id}

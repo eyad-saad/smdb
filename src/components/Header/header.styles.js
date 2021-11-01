@@ -16,6 +16,10 @@ export const Content = styled.div`
     a {
         color: var(--white);
         text-decoration: none;
+        cursor: pointer;
+        :hover{
+            opacity: 0.8;
+        }
     }
 
     button{

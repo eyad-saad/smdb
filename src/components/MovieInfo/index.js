@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { render } from "react-dom";
+import {Context} from '../../context';
 
 // Components
 import Thumb from '../Thumb';
+import Button from '../Button';
 
 // Config
 import {IMAGE_BASE_URL, POSTER_SIZE} from '../../config';
@@ -16,13 +18,16 @@ import {Wrapper, Content, Text} from './MovieInfo.styles'
 // external
 import ReactStars from "react-rating-stars-component";
 
+import API from '../../API';
 
-const ratingChanged = (newRating) => {
-    console.log(newRating);
-  };
-  
-const MovieInfo = ({ movie}) => (
-    <Wrapper backdrop={movie.backdrop_path}>
+// const ratingChanged = (newRating) => {
+//   };
+const MovieInfo = ({movie}) =>{
+    const [user, setUser] = useContext(Context);
+
+    
+    return (
+        <Wrapper backdrop={movie.backdrop_path}>
         <Content>
             <Thumb
                 image={
@@ -39,25 +44,40 @@ const MovieInfo = ({ movie}) => (
                 <div className = "rating-directors">
                     <div>
                         <h3>Average Rating</h3>
-                        <div className="score">{movie.vote_average}</div>
+                        <div className="score">{movie.average_rating? movie.average_rating: 0}</div>
                     </div>
                     <div className="director">
                         <h3>DIRECTOR{movie.directors.length>1? 'S': ''}</h3>
                         {movie.directors.map(director => (
-                            <p key={director.credit_id}>{director.name}</p>
+                            <p key={director.id}>{director.name}</p>
+                            ))}
+                    </div>
+                    <div className="director">
+                        <h3>GENRE{movie.genres.length>1? 'S': ''}</h3>
+                        {movie.genres.map(genre => (
+                            <p key={genre.id}>{genre.name}</p>
                             ))}
                     </div>
                 </div>
+                {user
+                ?<>
                 <h3>Rate:</h3>
                 <ReactStars
                     count={5}
-                    onChange={ratingChanged}
+                    onChange={(newRating) => {API.rateMovie(user.token, movie.id, newRating)}}
                     size={24}
                     activeColor="#ffd700"
                 />
+                <button >Download</button>: null
+                </>
+                : null
+            }
+
             </Text>
         </Content>
     </Wrapper>
-)
+    )
+}
+
 
 export default MovieInfo

@@ -33,6 +33,21 @@ export const Content = styled.div`
         max-height: none;
     }
 
+    button{
+        color: var(--white);
+        background: var(--darkGrey);
+        min-width: 80px;
+        height: 35px; 
+        border-radius: 30px;
+        border-color: var(--white);
+        font-size: var(--fontBig);
+        margin: 20px 0px;
+        transition: all 0.3s;
+        cursor: pointer;
+        :hover{
+            opacity: 0.8;
+        }
+
 `;
 
 export const Text = styled.div`

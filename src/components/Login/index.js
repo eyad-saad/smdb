@@ -29,16 +29,14 @@ const Login = () => {
     const handleSubmit = async () => {
         setError(false);
         try {
-            const requestToken = await API.getRequestToken();
-            const sessionId = await API.authenticate(
-                requestToken,
-                username,
-                password
-            );
-            setUser({ sessionId: sessionId.session_id, username});
-            navigate('/')
-            console.log(sessionId)
-
+            const requestToken = await API.login(username, password);
+            if (requestToken){
+                setUser({ token: requestToken, username});
+                navigate('/')   
+            }
+            else{
+                setError(true)
+            }
         } catch(error){
             setError(true);
         }
@@ -54,6 +52,7 @@ const Login = () => {
                 name='username'
                 onChange={handleInput}
             />
+            <label>Password</label>
             <input 
                 type='password'
                 value={password}

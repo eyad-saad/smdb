@@ -11,7 +11,7 @@ import {Wrapper} from './Register.styles';
 //Context
 import { Context } from '../../context';
 
-const Login = () => {
+const Register = () => {
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(false);
@@ -29,15 +29,17 @@ const Login = () => {
     const handleSubmit = async () => {
         setError(false);
         try {
-            const requestToken = await API.getRequestToken();
-            const sessionId = await API.authenticate(
-                requestToken,
+            const requestToken = await API.register(
                 username,
                 password
             );
-            setUser({ sessionId: sessionId.session_id, username});
+            // const sessionId = await API.authenticate(
+            //     requestToken,
+            //     username,
+            //     password
+            // );
+            setUser({ token: requestToken, username});
             navigate('/')
-            console.log(sessionId)
 
         } catch(error){
             setError(true);
@@ -54,6 +56,8 @@ const Login = () => {
                 name='username'
                 onChange={handleInput}
             />
+            <label>Password</label>
+
             <input 
                 type='password'
                 value={password}
@@ -66,4 +70,4 @@ const Login = () => {
     )
 }
 
-export default Login;
+export default Register;
