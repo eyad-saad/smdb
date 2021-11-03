@@ -37,13 +37,7 @@ const Header = () => {
                     <span>&nbsp;|&nbsp;</span>
                     <a text='Register' onClick={() => {navigate('register')}}> Register</a>
 
-                    {/* <Link to='/login'>
-                        <span>Log in</span>
-                    </Link>
-                    <span>  </span>
-                    <Link to='/register'>
-                        <span>Register</span>
-                    </Link> */}
+
                     </>
                 )}
                 

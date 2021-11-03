@@ -14,6 +14,9 @@ import { Context } from '../../context';
 const Register = () => {
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [birthDate, setBirthDate] = useState('');
+    const [martialStatus, setMaritalStatus] = useState('single');
     const [error, setError] = useState(false);
 
     const [_user, setUser] = useContext(Context);
@@ -25,19 +28,26 @@ const Register = () => {
 
         if (name === 'username') setUserName(value);
         if (name === 'password') setPassword(value);
+        if (name === 'email') setEmail(value);
+        if (name === 'birth-date') setBirthDate(value);
+
     };
+
+    const handleChange = (event) =>{
+        setMaritalStatus(event.target.value)
+    }
+
     const handleSubmit = async () => {
         setError(false);
         try {
             const requestToken = await API.register(
                 username,
-                password
+                email,
+                password,
+                birthDate,
+                martialStatus,
             );
-            // const sessionId = await API.authenticate(
-            //     requestToken,
-            //     username,
-            //     password
-            // );
+
             setUser({ token: requestToken, username});
             navigate('/')
 
@@ -56,6 +66,15 @@ const Register = () => {
                 name='username'
                 onChange={handleInput}
             />
+
+            <label>Email</label>
+            <input 
+                type='text'
+                value={email}
+                name='email'
+                onChange={handleInput}
+            />
+
             <label>Password</label>
 
             <input 
@@ -64,6 +83,21 @@ const Register = () => {
                 name='password'
                 onChange={handleInput}
             />
+            <label>Date of birth</label>
+
+            <input 
+                type='Date'
+                value={birthDate}
+                name='birth-date'
+                onChange={handleInput}
+            />
+            <label>marital status</label>
+
+            <select onChange={(value) => {handleChange(value)}} >
+                <option value="single">single</option>
+                <option value="married">married</option>
+            </select>
+
             <Button text='Register' callback={handleSubmit}/>
 
         </Wrapper>

@@ -14,6 +14,7 @@ import UserProvider from './context';
 
 //styles
 import {GlobalStyle} from './GlobalStyles'
+import BuyMovie from './components/BuyMovie';
 
 const App = () => ( 
     <Router>
@@ -25,6 +26,7 @@ const App = () => (
           <Route path='/register' element={<Register/>}/>
           <Route path='/:movieId' element={<Movie/>}/>
           <Route path='/*' element={<NotFound/>}/>
+          <Route path='/:movieId/buy' element={<BuyMovie/>}/>
         </Routes>
         <GlobalStyle/>
       </UserProvider>

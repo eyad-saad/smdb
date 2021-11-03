@@ -19,11 +19,14 @@ import {Wrapper, Content, Text} from './MovieInfo.styles'
 import ReactStars from "react-rating-stars-component";
 
 import API from '../../API';
+import {useNavigate} from 'react-router-dom';
+
 
 // const ratingChanged = (newRating) => {
 //   };
 const MovieInfo = ({movie}) =>{
     const [user, setUser] = useContext(Context);
+    const navigate = useNavigate();
 
     
     return (
@@ -58,6 +61,10 @@ const MovieInfo = ({movie}) =>{
                             <p key={genre.id}>{genre.name}</p>
                             ))}
                     </div>
+                    <div className="director">
+                        <h3>price</h3>
+                        {movie.price + ' sp'}
+                    </div>
                 </div>
                 {user
                 ?<>
@@ -68,7 +75,7 @@ const MovieInfo = ({movie}) =>{
                     size={24}
                     activeColor="#ffd700"
                 />
-                <button >Download</button>: null
+                <button onClick={() => {navigate(`/${movie.id}/buy`)}} >Download</button>
                 </>
                 : null
             }

@@ -36,5 +36,12 @@ export const GlobalStyle = createGlobalStyle`
             color: var(--white);
         }
     }
+    .alphabet{
+        margin: 10px 10px;
+    }
+    .letter{
+        cursor: pointer;
+
+    }
 
 `;

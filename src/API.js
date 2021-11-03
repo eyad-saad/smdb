@@ -1,6 +1,6 @@
 
 
-const API_URL = 'http://ec2-18-208-168-168.compute-1.amazonaws.com:8000';
+const API_URL = 'http://127.0.0.1:8000';
 
 const SEARCH_BASE_URL = `${API_URL}/movie`;
 
@@ -17,8 +17,8 @@ const defaultConfig = {
   };
   
   const apiSettings = {
-    fetchMovies: async (searchTerm, page) => {
-      const endpoint = `${API_URL}/movies?page=${page}&search-term=${searchTerm}`;
+    fetchMovies: async (searchTerm, page, filter) => {
+      const endpoint = `${API_URL}/movies?page=${page}&search-term=${searchTerm}&filter=${filter}`;
       console.log(endpoint)
       return await (await fetch(endpoint)).json();
     },
@@ -34,9 +34,9 @@ const defaultConfig = {
       const creditsEndpoint = `${API_URL}/movies/${movieId}/directors`;
       return await (await fetch(creditsEndpoint)).json();
     },
-    register: async (username, password) => {
+    register: async (username, email, password, birthDate, maritalStatus) => {
       const headers = { 'Content-Type': 'application/json' }
-      const body = JSON.stringify({'username': username, 'password': password});
+      const body = JSON.stringify({'username': username, 'password': password, 'email': email, 'date_of_birth': birthDate, 'marital_status': maritalStatus});
       const reqToken = await (await fetch(REQUEST_TOKEN_URL, {method: 'POST', body: body, headers: headers})).json();
       return reqToken.token;
     },
