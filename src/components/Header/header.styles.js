@@ -12,7 +12,9 @@ export const Content = styled.div`
     padding: 20px 0;
     margin: 0 auto;
     color: var(--white);
-
+    .students{
+        margin-left: auto
+    }
     a {
         color: var(--white);
         text-decoration: none;

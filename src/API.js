@@ -1,6 +1,6 @@
 
 
-const API_URL = 'http://127.0.0.1:8000';
+const API_URL = 'http://ec2-18-208-168-168.compute-1.amazonaws.com:8000';
 
 const SEARCH_BASE_URL = `${API_URL}/movie`;
 

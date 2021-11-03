@@ -36,6 +36,10 @@ const Header = () => {
                     <a text='Login' onClick={() => {navigate('login')}}> Login </a>
                     <span>&nbsp;|&nbsp;</span>
                     <a text='Register' onClick={() => {navigate('register')}}> Register</a>
+                    <div className="students">
+                       Created by: Abdulrahman Lababidi | Emad samni | Eyad Saad | Sameer Abuzraa
+
+                    </div>
 
 
                     </>
