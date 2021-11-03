@@ -37,7 +37,7 @@ const Header = () => {
                     <span>&nbsp;|&nbsp;</span>
                     <a text='Register' onClick={() => {navigate('register')}}> Register</a>
                     <div className="students">
-                       Created by: Abdulrahman Lababidi | Emad samni | Eyad Saad | Sameer Abuzraa
+                       Created by: abdulrahman_177911 | emad_176533 | eyad_157324 | sameer_156542
 
                     </div>
 
