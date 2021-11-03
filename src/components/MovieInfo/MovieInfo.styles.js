@@ -47,6 +47,7 @@ export const Content = styled.div`
         :hover{
             opacity: 0.8;
         }
+    }
 
 `;
 

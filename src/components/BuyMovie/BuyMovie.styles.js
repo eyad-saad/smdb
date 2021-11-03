@@ -32,7 +32,14 @@ export const Content = styled.div`
         display: block;
         max-height: none;
     }
-
+    input {
+        width: 100%;
+        height: 30px;
+        border: 1px solid var(--darkGrey);
+        border-radius: 20px;
+        margin: 10px 0;
+        padding: 10px;
+    }
     button{
         color: var(--white);
         background: var(--darkGrey);
@@ -47,6 +54,7 @@ export const Content = styled.div`
         :hover{
             opacity: 0.8;
         }
+    }
 
 `;
 

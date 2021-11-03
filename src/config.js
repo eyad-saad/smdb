@@ -1,7 +1,7 @@
 // Configuration for TMDB API
 // Read more about the API here: https://developers.themoviedb.org/
 
-const API_URL = 'http://127.0.0.1:8000';
+const API_URL = 'http://ec2-18-208-168-168.compute-1.amazonaws.com:8000/';
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const SEARCH_BASE_URL = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=`;
@@ -11,7 +11,7 @@ const REQUEST_TOKEN_URL = `${API_URL}authentication/token/new?api_key=${API_KEY}
 const LOGIN_URL = `${API_URL}authentication/token/validate_with_login?api_key=${API_KEY}`;
 const SESSION_ID_URL = `${API_URL}authentication/session/new?api_key=${API_KEY}`;
 
-const IMAGE_BASE_URL = 'http://127.0.0.1:8000';
+const IMAGE_BASE_URL = 'http://ec2-18-208-168-168.compute-1.amazonaws.com:8000/';
 // Sizes: w300, w780, w1280, original
 const BACKDROP_SIZE = 'w1280';
 // w92, w154, w185, w342, w500, w780, original

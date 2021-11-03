@@ -17,6 +17,7 @@ import NoImage from '../images/no_image.jpg';
 
 // Hook
 import {useMovieFetch} from '../hooks/useMovieFetch';
+import { API_URL } from '../config';
 
 
 const Movie = () => {
@@ -31,6 +32,8 @@ const Movie = () => {
             <MovieInfo movie={movie}></MovieInfo>
             {/* <MovieInfoBar time={movie.runtime} budget={movie.budget} revenue={movie.revenue}/> */}
             <Grid header='Actors'>
+                {console.log(movie.actors)}
+                {console.log(`${API_URL}`)}
                 {movie.actors.map(actor => (
                     <Actor 
                     key={actor.id}
@@ -38,7 +41,7 @@ const Movie = () => {
                     character={actor.character}
                     imageUrl={
                         actor.image
-                        ? `${IMAGE_BASE_URL}${actor.image}`
+                        ? `${API_URL}/${actor.image}`
                         : NoImage
                     }/>
                 ))}

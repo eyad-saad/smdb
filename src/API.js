@@ -53,6 +53,13 @@ const defaultConfig = {
       const response = await (await fetch(`${API_URL}/movies/rate`, {method: 'POST', body: body, headers: headers})).json();
       return response;
     },
+    buyMovie: async (token, movieId, firstName, lastName, email, creditCard) => {
+      const headers = {  'Content-Type': 'application/json',
+                         'Authorization': 'Token ' + token }
+      const body = JSON.stringify({'first_name':firstName, 'last_name': lastName, 'email': email, 'credit_card': creditCard});
+      const response = await (await fetch(`${API_URL}/movies/${movieId}/buy`, {method: 'POST', body: body, headers: headers})).json();
+      return response;
+    },
     // authenticate: async (requestToken, username, password) => {
     //   const bodyData = {
     //     username,
